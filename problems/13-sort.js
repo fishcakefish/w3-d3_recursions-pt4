@@ -23,7 +23,18 @@ sort([]); // []
 
 function sort(nums, sorted = []) {
     // Your code here
+    debugger
+    if (!nums.length) return sorted
+    const smallest = Math.min(...nums)
+    const magicNum = nums.indexOf(smallest)
+    const newNums = nums.slice(0, magicNum).concat(nums.slice(magicNum + 1))
+    sorted.push(smallest)
+    return sort(newNums, sorted)
 }
+debugger
+sort([4,1,6,3,1,7]); // [1, 1, 3, 4, 6, 7]
+sort([0, 1, -3]); // [-3, 0, 1]
+sort([]); // []
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = sort;
